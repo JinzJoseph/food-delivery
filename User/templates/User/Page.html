@@ -1,0 +1,62 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="5" align="center" cellpadding="10">
+            <tr>
+                <td>Page name</td>
+                <td><input type="txt" name="page_name"></td>
+            </tr>
+            <tr>
+                <td>Page bio</td>
+                <td><input type="text" name="page_bio"></td>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td><input type="file" name="txtphoto"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="post" value="post">
+                </td>
+                
+            </tr>
+        </table>
+    </form>
+
+    <br><br>
+
+    <table border="3" align="center" cellpadding="10">
+        <tr>
+            <td>SI no.</td>
+            <td>Photo</td>
+            <td>PageName</td>
+            <td>Bio</td>
+            <td>Action</td>
+        </tr>
+
+        {% for i in pagedata %}
+        <tr>
+            <td>{{forloop.counter}}</td> 
+            <td><img src="{{i.page_photo.url}}" width="150" height="150" alt=""></td>
+            
+            <td>{{i.page_name}}</td>
+            <td>{{i.page_bio}}</td>
+            <td><a href="{% url 'User:del_page' i.id  %}">Delete</a></td>
+        
+           
+        </tr>
+        {% endfor  %}
+    </table>
+</body>
+</html>
+{% endblock content %}

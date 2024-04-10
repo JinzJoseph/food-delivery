@@ -1,0 +1,15 @@
+<div class="main" id="result">
+    {% for i in res %}
+    <a href="{% url 'User:viewfood' i.id %}">
+        <div class="sub">
+            <div><img src="{{i.rest_photo.url}}" width="150" height="150"></div>
+            <div>Name :{{i.rest_name}}</div>
+            <div>Contact :{{i.rest_contact}}</div>
+            <div>Email :{{i.rest_email}}</div>
+            <div>Place :{{i.place.place_name}}</div>
+            <div>Place :{{i.place.district.district_name}}</div>
+          
+        </div>
+    </a>
+    {% endfor %}
+</div>

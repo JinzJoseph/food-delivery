@@ -1,0 +1,48 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'Admin:LoadingHomePage' %}">Home</a>
+    <form action="" method="post">
+        {%  csrf_token %}
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <td>category</td>
+                <td><input type="text" name="Category" value="{{catdata.category_name}}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                <input type="submit" name="save" value="save">
+                <input type="submit" name="cance" value="cance"></td>
+                
+            </tr>
+        </table>
+    </form>
+    <table border="3" align="center" cellpadding="10">
+        <tr>
+            <td>si no.</td>
+            <td>Category</td>
+            <td>action</td>
+        </tr>
+        {% for i in categorydata %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.category_name}}</td>
+            <td>
+                <a href="{% url 'Admin:del_category' i.id  %}">Delete</a> ||
+                <a href="{% url 'Admin:edit_category' i.id  %}">Edit</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock content %}

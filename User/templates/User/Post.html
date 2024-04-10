@@ -1,0 +1,59 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="5" align="center" cellpadding="10">
+            <tr>
+                <td>Caption</td>
+                <td><input type="txt" name="post_caption"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="post_description"></td>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td><input type="file" name="txtphoto"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="post" value="post">
+                </td>
+                
+            </tr>
+        </table>
+    </form>
+
+    <br><br>
+
+    <table border="3" align="center" cellpadding="10">
+        <tr>
+            <td>SI no.</td>
+            <td>photo</td>
+            <td>caption</td>
+            <td>description</td>
+            <td>action</td>
+        </tr>
+        {%  for i in postdata   %}
+        <tr>
+            <td>{{forloop.counter}}</td> 
+            <td><img src="{{i.post_photo.url}}" width="150" height="150"></td>
+            <td>{{i.post_caption}}</td>
+            <td>{{i.post_description}}</td>
+            <td><a href="{% url 'User:del_post' i.id  %}">Delete</a></td>
+           
+        </tr>
+        {% endfor  %}
+    </table>
+</body>
+</html>
+{% endblock content %}

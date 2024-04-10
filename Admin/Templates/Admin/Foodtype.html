@@ -1,0 +1,47 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" method="POSt">
+        {%  csrf_token %}
+        <table border="3" align="center" cfoodtypeellpadding="10">
+            <tr>
+                <td>foodtype</td>
+                <td><input type="text" name="foodtype" value="{{disdata.foodtype_name}}"></td>
+            </tr>
+            <tr colspan="2">
+                <td colspan="2" align="center">
+                <input type="submit" name="save" value="save">
+                <input type="submit" name="cancel" value="cancel">
+            </td>
+            </tr>
+        </table>
+    </form>
+    <table border="3" align="center" cellpadding="10">
+        <tr>
+            <td>SI no.</td>
+            <td>foodtype</td>
+            <td>action</td>
+        </tr>
+        {%  for i in districtdata   %}
+        <tr>
+            <td>{{forloop.counter}}</td> 
+            <td>{{i.foodtype_name}}</td>
+            <td><a href="{% url 'Admin:del_foodtype' i.id  %}">Delete</a></td>
+            <td><a href="{% url 'Admin:edit_foodtype' i.id  %}">Edit</a></td>
+        </tr>
+        {% endfor  %}
+    </table>
+
+    
+</body>
+</html>
+{% endblock content %}
