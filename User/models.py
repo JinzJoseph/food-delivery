@@ -1,5 +1,5 @@
 from django.db import models
-from Guest.models import *
+# from Guest.models import *
 from Restaurant.models import *
 # Create your models here.
 

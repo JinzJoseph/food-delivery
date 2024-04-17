@@ -11,7 +11,9 @@ def userRegistration(request):
     district = tbl_district.objects.all()
     if request.method=="POST":
         place = tbl_place.objects.get(id=request.POST.get('sel_place'))
-        tbl_user.objects.create(user_name=request.POST.get("txtname"),user_gender=request.POST.get("gender"),user_contact=request.POST.get("txtcontact"),user_email=request.POST.get("txtemail"),user_password=request.POST.get("txtpwd"),place=place)
+        tbl_user.objects.create(user_name=request.POST.get("txtname"),user_gender=request.POST.get("gender"),user_contact=request.POST.get("txtcontact"),
+        user_contact1=request.POST.get("txtcontact1"),
+        user_email=request.POST.get("txtemail"),user_password=request.POST.get("txtpwd"),place=place)
         return redirect("Guest:userRegistration")
     else:
         return render(request,"Guest/NewUser.html",{"districtdata":district})

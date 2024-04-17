@@ -55,7 +55,8 @@ urlpatterns = [
 
 
     path('UserFeedbackNew/',views.UserFeedbackNew,name="UserFeedbackNew"),
-    path('logout/',views.logout,name="logout")
+    path('logout/',views.logout,name="logout"),
+    path('report/',views.viewbooking,name="report")
 
 
 ]

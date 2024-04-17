@@ -4,6 +4,9 @@ from Guest.models import *
 # Create your views here.
 from User.models import *
 from datetime import date
+from django.views import View
+
+
 
 def LoadingHomePage(request):
     return render(request,"Admin/HomePage.html")
@@ -242,5 +245,18 @@ def ComplaintSolved(request):
 def UserFeedbackNew(request):
     data=tbl_feedback.objects.filter(feedback_status=0)
     return render(request,"Admin/UserFeedBack.html",{'data':data})
+
+# def report(request):
+#     if request.method=="POST":
+#         data=tbl_booking.objects.all()
+#         return render(request,"Admin/Report.html",{'data':data})   
+#     else:
+#         return render(request,"Admin/Report.html")
+def viewbooking(request):
+      restaurant_data=tbl_restaurant.objects.all()
+      booking_ids = tbl_cart.objects.filter(food__rest__in=restaurant_data).values_list('booking_id', flat=True)
+      bookings = tbl_booking.objects.filter(id__in=booking_ids, booking_status='3')
+      print(bookings)
+      return render(request,"Admin/Report.html",{'data':bookings})
 
 

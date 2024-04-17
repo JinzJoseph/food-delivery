@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>Name</td>
-                <td><input type="text" name="txtname" placeholder="Enter Name" required ></td>
+                <td><input type="text" name="txtname" placeholder="Enter Name"pattern="^[A-Z]+[a-zA-Z ]*$" required ></td>
             </tr>
             <tr>
                 <td>Gender</td>
@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td>Contact</td>
-                <td><input type="text" name="txtcontact" placeholder="Enter Contact" required ></td>
+                <td><input type="text" name="txtcontact" placeholder="Enter Contact"   pattern="[7-9]{1}[0-9]{9}" required ></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -67,7 +67,7 @@
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" name="txtpwd" placeholder="Enter Password" required ></td>
+                <td><input type="password" name="txtpwd" placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required ></td>
             </tr>
             <tr>
                 <td>Photo</td>
